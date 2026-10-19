@@ -1,0 +1,6 @@
+public enum ServiceType {
+    DIAGNOSIS,
+    INSTALLATION,
+    CERTIFIED_INSTALLATION,
+    AC_MAINTENANCE
+}
