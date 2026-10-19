@@ -5,6 +5,7 @@ public abstract class Order implements Quotable {
     protected float workHours;
     protected WorkZone zone;
     protected OrderStatus status;
+    protected ServiceType serviceType;
     protected int visitsCount;
 
     public Order(String Id, String customerName, String address, float workHours, WorkZone zone) {
@@ -30,12 +31,22 @@ public abstract class Order implements Quotable {
         this.workHours = workHours;
         this.zone = zone;
         this.status = OrderStatus.Pending;
+        this.serviceType = serviceType;
         this.visitsCount = 0;
     }
 
     public abstract int estimatedDays();
     public abstract int maxVisits();
-    public abstract String categoryName();
+
+    public String categoryName() {
+        switch (serviceType) {
+            case Diagnosis: return "Diagnóstico";
+            case Installation: return "Instalación";
+            case Certified_installation: return "Instalación Eléctrica Certificada";
+            case AC_maintenance: return "Mantenimiento de Aire Acondicionado";
+            default: return "Desconocido";
+        }
+    }
 
     public String getId() {
         return Id;
@@ -63,6 +74,10 @@ public abstract class Order implements Quotable {
 
     public void setStatus(OrderStatus status) {
         this.status = status;
+    }
+
+    public ServiceType getServiceType() { 
+        return serviceType; 
     }
 
     public int getVisitsCount() {

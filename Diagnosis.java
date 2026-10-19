@@ -1,11 +1,10 @@
 public class Diagnosis extends Order {
-    public Diagnosis(String Id, String costumerName, String address, float workHours, WorkZone zone) {
-        super(Id, costumerName, address, workHours, zone);
-
+    public Diagnosis(String Id, String customerName, String address, float workHours, WorkZone zone) {
+        super(Id, customerName, address, workHours, zone);
+        
         if (workHours > 1.5f) {
             throw new IllegalArgumentException("Un diagnóstico no puede superar las 1.5 horas de trabajo.");
         }
-        
     }
 
     @Override
